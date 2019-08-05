@@ -1,0 +1,40 @@
+@media screen and (max-width: 896px) {
+    @import './basiccontent.scss';
+
+    main {
+    
+        background: url("/images/background1.jpg") no-repeat;
+    
+        .edit {
+    
+            height: calc(100vh - 52px - 40px); // application.cssのmainからflashを引いた値 指定しないとSafariでバグる
+            display: grid;
+            grid-template-rows: 1fr 48px;
+        
+            .content {
+                // 改行
+                word-wrap: break-word;
+                .msg {
+                    border: 1px dashed #000;
+                    margin-left: 10px;
+                }
+                .person {
+                    border: 1px dashed #000;
+                    text-align: end;
+                }
+            }
+            .btn {
+                grid-row: 2 / 3;
+                margin: auto;
+                width: 100px;
+                height: 30px;
+                background: #000;
+                color: #fff;
+            }
+            .buttons {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }    
+}

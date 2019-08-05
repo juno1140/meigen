@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "list", :media => "all" %>
+<div id="person_details">
+  <h1>
+  <%= @person.name %>
+  </h1>
+  <div class="message_list">
+    <% @messages.each do |message| %>
+      <hr>
+      <div class="grid">
+        <div class="message">
+          <p><%= message.content %></p>
+        </div>
+        <div class="button">
+          <% passEdit = "/posts/#{message.id}/edit" %>
+          <% passDel = "/posts/#{message.id}/destroy" %>
+          <button onclick="pageChange('<%= passEdit %>');this.disabled = true;">編集</button>
+          <button onclick="pageChange('<%= passDel %>');this.disabled = true;">削除</button>
+        </div>      
+      </div>
+    <% end %>
+    <hr>
+  </div>
+  
+</div>

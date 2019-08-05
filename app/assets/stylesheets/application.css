@@ -10,6 +10,84 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ * require_tree .
  *= require_self
  */
+
+/* 文字コード */
+@charset "UTF-8";
+
+/* リセットCSS */
+@import "./nomalize";
+* {
+     margin: 0;
+     padding: 0;
+}
+
+/* スマホサイズ */
+@media screen and (max-width: 896px) {
+
+    /* スマホサイズの場合非表示 */
+    footer {
+        display: none;
+    }
+
+    /* Grid Layout */
+    body {
+        display: grid;
+        grid-template-rows: 1fr 52px;
+    }
+    header {
+        grid-row: 2 / 3;
+    }
+    main {
+        grid-row: 1 / 2;
+        height: calc(100vh - 52px); /* 画面の高さ - header */
+        display: grid;
+        grid-template-rows: 40px 1fr;
+        overflow-y: scroll;
+    }
+    main .notice {
+        grid-row: 1 / 2;
+        margin: auto;
+        text-align: center;
+        background-color: #5f5;
+        width: 100%;
+        padding: 3px 0;
+    }
+    main section {
+        grid-row: 2 / 3;
+    }
+    header nav {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        text-align: center;
+    }
+    header nav a,
+    header nav a:visited {
+        color: #000;
+    }
+    header nav a i {
+        margin: 10px;
+    }
+    header nav a #home {
+        grid-column: 1 / 2;
+        display: none;
+    }
+    header nav a #new {
+        grid-column: 2 / 3;
+        display: none;
+    }
+    header nav a #list {
+        grid-column: 3 / 4;
+        display: none;
+    }
+}
+
+@media screen and (min-width: 897px) {
+    /* スマホサイズ以上は非表示 */
+    header,
+    main {
+        display: none;
+    }
+}

@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#csvファイルを扱うためのgemを読み込む
+require "csv"
+
+CSV.foreach('db/person_data.csv') do |row|
+
+    Person.create(:name => row[0])
+
+end
+
+CSV.foreach('db/message_data.csv') do |row|
+
+    Message.create(:content => row[0], :person_id => row[1])
+
+end

@@ -1,0 +1,20 @@
+.content {
+    grid-row: 1 / 2;
+    margin: 0 auto;
+    padding: 30px 10px;
+    border: #070 5px solid;
+    height: calc(100vh - 140px - 60px - 10px); // 画面縦サイズ - (ヘッダー + flash + ハート) - padding - border
+    background: #fff;
+    font-size: 6vw;
+    line-height: 1.8em;
+    // 縦書き
+    -ms-writing-mode: tb-rl; // IE
+    writing-mode: vertical-rl;
+    -webkit-text-orientation: upright; // safari
+    text-orientation: upright;
+    // 改行
+    word-wrap: break-word;
+    .person {
+        text-align: end;
+    }
+}

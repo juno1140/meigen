@@ -1,0 +1,63 @@
+@media screen and (max-width: 896px) {
+    main {
+
+        background: -moz-linear-gradient();
+        background: -webkit-linear-gradient();
+        background: linear-gradient(135deg, #2872df, #2ea0ff, #4fb0ff, #2ea0fa, #2e50ca);
+    
+        #person_list {
+            color: #fff;
+            h1 {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .people {
+                margin: 0 10vw;
+                .person {
+                    font-size: 5vw;
+                    margin-bottom: 30px;
+                    a {
+                        text-decoration: none;
+                        color: #fff;
+                        &:visited {
+                            color: #fff;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    
+        #person_details {
+            h1 {
+                text-align: center;
+                color: #fff;
+                font-size: 8vw;
+            }
+            .message_list{
+                .grid {
+                    display: grid;
+                    grid-template-columns: 1fr 60px;
+                }
+                .message {
+                    grid-column: 1 / 2;
+                    margin: 20px;
+                    font-size: 4vw;
+                    color: #f2f2f2;
+                }
+                .button {
+                    grid-column: 2 / 3;
+                    display: flex;
+                    flex-direction: column;
+                    margin: auto;
+                    button {
+                        margin: 5px 0;
+                        padding: 3px;
+                        background-color: #838383;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+@media screen and (max-width: 896px) {
+    @import './basiccontent.scss';
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    main {
+    
+        background: url("/images/background1.jpg") no-repeat;
+    
+        section {
+            #top {
+                height: calc(100vh - 52px - 40px); // application.cssのmainからflashを引いた値 指定しないとSafariでバグる
+                display: grid;
+                grid-template-rows: 1fr 48px;
+                .content {
+                    .text {
+                        animation-name: fade-in;
+                        animation-timing-function: ease-in; // 始めは遅く、あと早く
+                        animation-duration: 2s;
+                    }
+                    .person {
+                        opacity: 0;
+                        animation-name: fade-in;
+                        animation-timing-function: ease-in;
+                        animation-fill-mode: forwards; // アニメーション終了時もスタイルを維持
+                        animation-duration: 1s;
+                        animation-delay: 2.5s;
+                    }
+                }
+            }
+        }
+    }
+}

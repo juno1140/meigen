@@ -1,0 +1,13 @@
+<%= stylesheet_link_tag "list", :media => "all" %>
+<div id="person_list">
+  <h1>人物</h1>
+  <div class="people">
+    <% @people.each do |person| %>
+    <% if person.messages.count != 0 %>
+      <div class="person">
+        <%= link_to("#{person.name} (#{person.messages.count})", "/list/#{person.id}/personDetails") %><br/>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
