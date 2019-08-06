@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139382417-7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-139382417-7');
+    </script>
     <title>名言</title>
     <meta name="description" content="あなたの心を動かした言葉はなんですか？いい言葉はその人の経験から生まれたもので、他人に気づきを与えてくれます。そんな名言をぜひ登録して共有してください。">
     <meta name="viewport" content="width=device-width">
@@ -14,10 +23,10 @@
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="@Juno1140"/>
     <%# OGP %>
-    <meta property="og:url" content="https://meigen.junosbooks.xyz">
+    <meta property="og:url" content="https://app-meigen.herokuapp.com">
     <meta property="og:title" content="名言">
     <meta property="og:description" content="あなたの心を動かした言葉はなんですか？いい言葉はその人の経験から生まれたもので、他人に気づきを与えてくれます。そんな名言をぜひ登録して共有してください。">
-    <meta property="og:image" content="https://meigen.junosbooks.xyz/images/ogpimage.png">
+    <meta property="og:image" content="https://app-meigen.herokuapp.com/images/ogpimage.png">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
