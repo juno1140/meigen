@@ -15,11 +15,28 @@
 //= require turbolinks
 //= require_tree .
 
-
-const M_PLACEHOLDER = '名言「126字以内」<br>※事実と異なることは入力しないでください。';
-const P_PLACEHOLDER = '人名「18字以内」';
-const PH_COLOR = '#aaa';
-const NON_PH_COLOR = '#000';
+const CLASS_TYPE = {
+    msg: '.placeMsg',
+    psn: '.placePsn'
+};
+const PH_TEXT = {
+    msg: '名言「126字以内」<br>※事実と異なることは入力しないでください。',
+    psn: '人名「18字以内」'
+}
+const PH_COLOR = '#aaa'; // プレースホルダーの色
+const NON_PH_COLOR = '#000'; // 通常の色
+const LIMIT_NUM = {
+    msg:126,
+    psn:18
+};
+const ALERT_MSG_REQUIRE = {
+    msg: '名言を入力してください',
+    psn: '人名を入力してください '
+};
+const ALERT_MSG_LIMIT = {
+    msg: '名言は126文字以内で入力してください。',
+    psn: '人名は18文字以内で入力してください。 '
+};
 
 // 読み込み完了時の処理
 window.onload = function() {
@@ -31,62 +48,31 @@ window.onload = function() {
     // 後方一致
     for (var p of patterns) {
         if((path.lastIndexOf(p)+p.length===path.length)&&(p.length<=path.length)){
-            setPlaceholder();
+            setPlaceholder('msg');
+            setPlaceholder('psn');
             return;
         }
     }
 
 }
 
-// プレースホルダーの設定
-function setPlaceholder (){
-
-    var msg = document.querySelector(".placeMsg");
-    var person = document.querySelector(".placePsn");
-
-    msg.innerHTML = M_PLACEHOLDER;
-    msg.style.color = PH_COLOR;
-    person.innerHTML = P_PLACEHOLDER;
-    person.style.color = PH_COLOR;
-
+// テキストが空ならプレースホルダーを設定(フォーカスを外した時などの処理)
+function setPlaceholder(type) {
+    var text = document.querySelector(CLASS_TYPE[type]);
+    if (text.textContent == '') {
+        text.innerHTML = PH_TEXT[type];
+        text.style.color = PH_COLOR;
+    }
 }
 
-// placeMsgの内容がプレースホルダーなら空にする(テキストクリック時他)
-function clearMsg() {
-    var msg = document.querySelector(".placeMsg");
-    if (msg.innerHTML == M_PLACEHOLDER) {
+// テキストがプレースホルダーなら空にする(テキストクリック時など)
+function clearText(type) {
+    var msg = document.querySelector(CLASS_TYPE[type]);
+    if (msg.innerHTML == PH_TEXT[type]) {
         msg.innerHTML = '';
         msg.style.color = NON_PH_COLOR;
     }
 }
-
-// placePsnの内容がプレースホルダーなら空にする(テキストクリック時他)
-function clearPsn() {
-    var msg = document.querySelector(".placePsn");
-    if (msg.innerHTML == P_PLACEHOLDER) {
-        msg.innerHTML = '';
-        msg.style.color = NON_PH_COLOR;
-    }
-}
-
-// placeMsgの内容が空ならプレースホルダーを設定する(フォーカスを外した時の処理)
-function checkMsg() {
-    var msg = document.querySelector(".placeMsg");
-    if (msg.innerHTML == '') {
-        msg.innerHTML = M_PLACEHOLDER;
-        msg.style.color = PH_COLOR;
-    }
-}
-
-// placePsnの内容が空ならプレースホルダーを設定する(フォーカスを外した時の処理)
-function checkPsn() {
-    var msg = document.querySelector(".placePsn");
-    if (msg.innerHTML == '') {
-        msg.innerHTML = P_PLACEHOLDER;
-        msg.style.color = PH_COLOR;
-    }
-}
-
 
 // 名言新規登録
 function newRegist() {
@@ -96,28 +82,22 @@ function newRegist() {
     var person = document.querySelector(".person");
     var btn = document.querySelector(".btn");
     
-//     console.log(msg.innerText);
-//     console.log(msg.innerHTML);
-//     console.log(msg.textContent);
-//     btn.disabled = false; // ボタンの操作を可能にする
-// return
-    
     // msg何も入力がない場合
-    if (msg.innerHTML == M_PLACEHOLDER) {
-        alert('名言を入力してください');
+    if (msg.innerHTML == PH_TEXT['msg']) {
+        alert(ALERT_MSG_REQUIRE['msg']);
         btn.disabled = false; // ボタンの操作を可能にする
         return;
     }
 
     // person何も入力がない場合
-    if (person.innerHTML == P_PLACEHOLDER) {
-        alert('人名を入力してください');
+    if (person.innerHTML == PH_TEXT['psn']) {
+        alert(ALERT_MSG_REQUIRE['psn']);
         btn.disabled = false; // ボタンの操作を可能にする
         return;
     }
 
     // 文字数のバリデーション
-    if (!checkWordCount('0') || !checkWordCount('1')) {
+    if (!checkWordCount('msg') || !checkWordCount('psn')) {
         btn.disabled = false; // ボタンの操作を可能にする
         return;
     }
@@ -157,21 +137,21 @@ function newUpdate() {
     var id = document.querySelector("#id").value;
 
     // msg何も入力がない場合
-    if (msg.innerHTML == M_PLACEHOLDER) {
-        alert('名言を入力してください');
+    if (msg.innerHTML == PH_TEXT['msg']) {
+        alert(ALERT_MSG_REQUIRE['msg']);
         btn.disabled = false; // ボタンの操作を可能にする
         return;
     }
 
     // person何も入力がない場合
-    if (person.innerHTML == P_PLACEHOLDER) {
-        alert('人名を入力してください');
+    if (person.innerHTML == PH_TEXT['psn']) {
+        alert(ALERT_MSG_REQUIRE['psn']);
         btn.disabled = false; // ボタンの操作を可能にする
         return;
     }
 
     // 文字数のバリデーション
-    if (!checkWordCount('0') || !checkWordCount('1')) {
+    if (!checkWordCount('msg') || !checkWordCount('psn')) {
         btn.disabled = false; // ボタンの操作を可能にする
         return;
     }
@@ -214,17 +194,11 @@ function pageChange(route) {
     window.location.href = route;
 }
 
-// 文字数チェック
-const ele = [
-    [".placeMsg", "126", "名言は126文字以内で入力してください。"], // placeMsgの文字数制限
-    [".placePsn", "18","人名は18文字以内で入力してください。"]     // placePsnの文字数制限
-];
-
-// placeMsgの文字数バリエーション
+// 文字数バリデーション
 function checkWordCount(type) {
-    var text = document.querySelector(ele[type][0]).innerText;
-    if (text.length > ele[type][1]) {
-        alert(ele[type][2]);
+    var text = document.querySelector(CLASS_TYPE[type]).textContent;
+    if (text.length > LIMIT_NUM[type]) {
+        alert(ALERT_MSG[type]);
         return false;
     }
     return true;

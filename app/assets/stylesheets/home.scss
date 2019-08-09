@@ -1,37 +1,68 @@
+// 基本デザイン
+@import './commonStyle.scss';
+
+// アニメーション
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.msg_anime {
+    animation-name: fade-in;
+    animation-timing-function: ease-in; // 始めは遅く、あと早く
+    animation-duration: 2s;
+}
+.person_anime {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards; // アニメーション終了時もスタイルを維持
+    animation-duration: 1s;
+    animation-delay: 3s;
+}
+
+/* スマホサイズ */
 @media screen and (max-width: 896px) {
-    @import './basiccontent.scss';
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
+
+    main {
+
+        background: url("/images/background450.jpg") no-repeat left center /cover;
+
+        #top {
+            .content {
+                .bg {
+                    // backgroundの背景を少し白くする
+                    background: rgba(255, 255, 255, 0.3);
+                    padding: 20px 40px 20px 3px;
+                    .person {
+                        text-align: end;
+                    }
+                }
+            }
         }
     }
-    
-    main {
-    
-        background: url("/images/background1.jpg") no-repeat left center /cover;
-    
-        section {
-            #top {
-                height: calc(100vh - 52px - 40px); // application.cssのmainからflashを引いた値 指定しないとSafariでバグる
-                display: grid;
-                grid-template-rows: 1fr 48px;
-                .content {
-                    .text {
-                        animation-name: fade-in;
-                        animation-timing-function: ease-in; // 始めは遅く、あと早く
-                        animation-duration: 2s;
-                    }
-                    .person {
-                        opacity: 0;
-                        animation-name: fade-in;
-                        animation-timing-function: ease-in;
-                        animation-fill-mode: forwards; // アニメーション終了時もスタイルを維持
-                        animation-duration: 1s;
-                        animation-delay: 3s;
-                    }
+}
+
+/* PCサイズ */
+@media screen and (min-width: 897px) {
+
+    body {
+        background: url("/images/background1024.jpg") no-repeat left center /cover;
+    }
+
+    #top {
+        margin: 8vh 30vw;
+
+        .content {
+            .bg {
+                // backgroundの背景を少し白くする
+                background: rgba(255, 255, 255, 0.3);
+                padding: 30px 50px 30px 5px;
+                .person {
+                    text-align: end;
                 }
             }
         }

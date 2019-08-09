@@ -1,0 +1,25 @@
+.content-style {
+
+    background: url("/images/bg_paper.jpg") no-repeat left center /cover;
+    border: #060 5px solid;
+    transform: translateX(-50%); // 要素の幅分左へ
+    line-height: 1.8em;
+    word-wrap: break-word;
+
+    /* スマホサイズ */
+    @media screen and (max-width: 896px) {
+        margin: 30px 50% 0;
+        height: calc(100vh - 52px - 90px); // 画面サイズ - メニューバー - 上余白 - ボタンサイズ
+        min-height: 350px;
+        font-size: 2.1rem;
+    }
+
+    /* PCサイズ */
+    @media screen and (min-width: 897px) {
+        margin: auto 50%;
+        height: 75vh;
+        min-height: 400px;
+        font-size: 2.5rem;
+    }
+
+}

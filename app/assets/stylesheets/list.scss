@@ -1,10 +1,21 @@
-@media screen and (max-width: 896px) {
-    main {
+// 変数の設定
+$bg-color: 135deg, #146393, #2e70cf, #539dc6, #3e80df, #030339;
+// ボタンデザイン
+.button-gray {
+    background: linear-gradient(135deg, #737373 0%, #b0b0b0 100%);
+    box-shadow: 2px 2px rgba(0,0,0,0.3);
+    color: #fff;
+    border-radius: 5px;
+    outline: none;
+}
 
-        background: -moz-linear-gradient();
-        background: -webkit-linear-gradient();
-        background: linear-gradient(135deg, #2872df, #2ea0ff, #4fb0ff, #2ea0fa, #2e50ca);
-    
+@media screen and (max-width: 896px) {
+
+    main {
+        background: -moz-linear-gradient($bg-color);
+        background: -webkit-linear-gradient($bg-color);
+        background: linear-gradient($bg-color);
+
         #person_list {
             color: #fff;
             h1 {
@@ -35,15 +46,18 @@
                 font-size: 8vw;
             }
             .message_list{
+                margin: 10px 0;
                 .grid {
                     display: grid;
                     grid-template-columns: 1fr 60px;
                 }
                 .message {
                     grid-column: 1 / 2;
-                    margin: 20px;
+                    margin: auto 0;
+                    padding: 15px;
                     font-size: 4vw;
-                    color: #f2f2f2;
+                    color: #fff;
+                    font-weight: bold;
                 }
                 .button {
                     grid-column: 2 / 3;
@@ -51,10 +65,88 @@
                     flex-direction: column;
                     margin: auto;
                     button {
-                        margin: 5px 0;
-                        padding: 3px;
-                        background-color: #838383;
-                        color: #fff;
+                        margin: 10px 0;
+                        padding: 5px 10px;
+                        font-size: 1.2rem;
+                        &:active {
+                            transform: translateY(2px);
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@media screen and (min-width: 897px) {
+
+    // 背景設定
+    body {
+        background: -moz-linear-gradient($bg-color) no-repeat;
+        background: -webkit-linear-gradient($bg-color) no-repeat;
+        background: linear-gradient($bg-color) no-repeat;
+        header {
+            background: #30b0ff;
+        }
+    }
+
+    #person_list {
+        h1 {
+            margin: 50px;
+            text-align: center;
+            font-size: 4rem;
+            color: #fff;
+        }
+        .people {
+            margin: 5vh 0;
+            line-height: 2.5em;
+            font-size: 2.5rem;
+            text-align: center;
+            .person {
+                a {
+                    text-decoration: none;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    #person_details {
+        h1 {
+            margin: 50px;
+            text-align: center;
+            font-size: 4rem;
+            color: #fff;
+        }
+        .message_list {
+            margin: 5vh 0;
+            line-height: 1.8em;
+            font-size: 2.5rem;
+            .grid {
+                display: grid;
+                grid-template-columns: 1fr 100px;
+                .message {
+                    grid-column: 1 / 2;
+                    margin: auto 0;
+                    padding: 40px 50px;
+                    font-size: 2rem;
+                    color: #fff;
+                    font-weight: bold;
+                }
+                .button {
+                    grid-column: 2 / 3;
+                    margin: auto;
+                    button {
+                        margin: 10px 0;
+                        padding: 5px 15px;
+                        font-size: 2rem;
+                        &:active {
+                            transform: translateY(2px);
+                            box-shadow: none;
+                        }
                     }
                 }
             }

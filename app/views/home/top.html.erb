@@ -1,11 +1,13 @@
 <%= stylesheet_link_tag "home", :media => "all" %>
 <div id="top">
-  <div class="content">
-    <div class="text">
-      <%= @data.content %>
-    </div>
-    <div class="person">
-      <%= @data.name %>
+  <div class="content content-style text-vertical">
+    <div class="bg">
+      <div class="msg msg_anime">
+        <%= @data.content %>
+      </div>
+      <div class="person person_anime">
+        <%= @data.name %>
+      </div>
     </div>
   </div>
 </div>

@@ -13,8 +13,8 @@
         <div class="button">
           <% passEdit = "/posts/#{message.id}/edit" %>
           <% passDel = "/posts/#{message.id}/destroy" %>
-          <button onclick="pageChange('<%= passEdit %>');this.disabled = true;">編集</button>
-          <button onclick="pageChange('<%= passDel %>');this.disabled = true;">削除</button>
+          <button class="button-gray" onclick="pageChange('<%= passEdit %>');this.disabled = true;">編集</button>
+          <button class="button-gray" onclick="pageChange('<%= passDel %>');this.disabled = true;">削除</button>
         </div>      
       </div>
     <% end %>

@@ -1,40 +1,134 @@
+// 変数の定義
+$border-style: 1px dashed #000;
+// 基本デザイン
+@import './commonStyle.scss';
+// ボタンデザイン
+.button-black-white {
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+    outline: none;
+}
+
 @media screen and (max-width: 896px) {
-    @import './basiccontent.scss';
 
     main {
     
-        background: url("/images/background1.jpg") no-repeat left center /cover;
+        background: url("/images/background450.jpg") no-repeat left center /cover;
     
-        .edit {
-    
-            height: calc(100vh - 52px - 40px); // application.cssのmainからflashを引いた値 指定しないとSafariでバグる
-            display: grid;
-            grid-template-rows: 1fr 48px;
-        
+        #new {
             .content {
-                // 改行
-                word-wrap: break-word;
-                .msg {
-                    border: 1px dashed #000;
-                    margin-left: 10px;
-                }
-                .person {
-                    border: 1px dashed #000;
-                    text-align: end;
+                .bg {
+                    // backgroundの背景を少し白くする
+                    background: rgba(255, 255, 255, 0.3);
+                    padding: 10px;
+                    .msg {
+                        margin-left: 5px;
+                        border: $border-style;
+                    }
+                    .person {
+                        text-align: end;
+                        border: $border-style;
+                    }
                 }
             }
             .btn {
-                grid-row: 2 / 3;
-                margin: auto;
-                width: 100px;
-                height: 30px;
-                background: #000;
-                color: #fff;
+                display: block;
+                margin: 10px auto;
+                padding: 5px 15px;
+                font-size: 1.8rem;
+            }
+        }
+
+        #edit {
+            .content {
+                .bg {
+                    // backgroundの背景を少し白くする
+                    background: rgba(255, 255, 255, 0.3);
+                    padding: 10px;
+                    .msg {
+                        margin-left: 5px;
+                        border: $border-style;
+                    }
+                    .person {
+                        text-align: end;
+                        border: $border-style;
+                    }
+                }
             }
             .buttons {
                 display: flex;
                 justify-content: center;
+                .btn {
+                    margin: 10px 10px;
+                    padding: 5px 15px;
+                    font-size: 1.8rem;
+                }
             }
         }
     }    
+}
+
+@media screen and (min-width: 897px) {
+
+    body {
+        background: url("/images/background1024.jpg") no-repeat left center /cover;
+    }
+
+    #new {
+        margin: 8vh 30vw 3vh;
+
+        .content {
+
+            .bg {
+                // backgroundの背景を少し白くする
+                background: rgba(255, 255, 255, 0.5);
+                padding: 30px;
+                .msg {
+                    margin-left: 20px;
+                    border: $border-style;
+                }
+                .person {
+                    text-align: end;
+                    border: $border-style;
+                }
+            }
+        }
+        .btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 5px 15px;
+            font-size: 2rem;
+        }
+    }
+
+    #edit {
+        margin: 8vh 30vw 3vh;
+
+        .content {
+
+            .bg {
+                // backgroundの背景を少し白くする
+                background: rgba(255, 255, 255, 0.5);
+                padding: 30px;
+                .msg {
+                    margin-left: 20px;
+                    border: $border-style;
+                }
+                .person {
+                    text-align: end;
+                    border: $border-style;
+                }
+            }
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            .btn {
+                margin: 20px 20px 0;
+                padding: 5px 15px;
+                font-size: 2rem;
+            }
+        }
+    }
 }

@@ -1,8 +1,10 @@
 <%= stylesheet_link_tag "posts", :media => "all" %>
-<div id="new" class="edit">
-  <div class="content">
-    <div class="msg placeMsg" contenteditable="true" onFocus="clearMsg();" onblur="checkMsg();"></div>
-    <div class="person placePsn" contenteditable="true" onFocus="clearPsn();" onblur="checkPsn();"></div>
+<div id="new">
+  <div class="content content-style text-vertical">
+    <div class="bg">
+      <div class="msg placeMsg" contenteditable="true" onFocus="clearText('msg');" onblur="setPlaceholder('msg');"></div>
+      <div class="person placePsn" contenteditable="true" onFocus="clearText('psn');" onblur="setPlaceholder('psn');"></div>
+    </div>
   </div>
-  <button class="btn" onclick="this.disabled = true; newRegist();">登録</button>
+  <button class="btn button-black-white" onclick="this.disabled = true; newRegist();">登録</button>
 </div>

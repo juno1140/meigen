@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139382417-7"></script>
@@ -10,43 +10,40 @@
 
       gtag('config', 'UA-139382417-7');
     </script>
-    <title>名言</title>
+    <title>心を動かす名言アプリ</title>
     <meta name="description" content="あなたの心を動かした言葉はなんですか？いい言葉はその人の経験から生まれたもので、他人に気づきを与えてくれます。そんな名言をぜひ登録して共有してください。">
     <meta name="viewport" content="width=device-width">
-    <%# Google Font %>
-    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
-    <%# Font Awesome %>
-    <link href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" rel="stylesheet">
     <%# Favicon %>
     <%= favicon_link_tag('favicon.ico') %>
     <%# shortcut icon%>
-    <link rel="shortcut icon" href="asset_url('ogpimage.png')">
-    <link rel="apple-touch-icon" sizes="180x180" href="asset_url('ogpimage.png')">
+    <link rel="apple-touch-icon-precomposed apple-touch-icon" sizes="65x65" href="asset_url('apple-touch-icon-precomposed.png')">
     <%# Twitter Card %>
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content="@Juno1140"/>
     <%# OGP %>
     <meta property="og:url" content="https://app-meigen.herokuapp.com">
-    <meta property="og:title" content="名言">
+    <meta property="og:title" content="心を動かす名言アプリ">
     <meta property="og:description" content="あなたの心を動かした言葉はなんですか？いい言葉はその人の経験から生まれたもので、他人に気づきを与えてくれます。そんな名言をぜひ登録して共有してください。">
-    <meta property="og:image" content="<%= asset_url('ogpimage.png') %>">
+    <meta property="og:image" content="<%= asset_url('apple-touch-icon.png') %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# Font Awesome %>
+    <%= stylesheet_link_tag    'css/all', media: 'all'%>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-      <nav data-turbolinks="false">
+    <header data-turbolinks="false">
+      <nav>
         <%= link_to "/" do %>
-          <i class="fas fa-home fa-2x"></i><div id="home">HOME</div>
+          <i class="fas fa-home fa-2x"></i><div class="menu">HOME</div>
         <% end %>
         <%= link_to "/posts/index" do %>
-          <i class="fas fa-plus fa-2x"></i><div id="new">NEW</div>
+          <i class="fas fa-plus fa-2x"></i><div class="menu">NEW</div>
         <% end %>
         <%= link_to "/list/personList" do %>
-          <i class="fas fa-bars fa-2x"></i><div id="list">LIST</div>
+          <i class="fas fa-bars fa-2x"></i><div class="menu">LIST</div>
         <% end %>
       </nav>
     </header>
@@ -58,11 +55,7 @@
           </div>
         <% end %>
       </div>
-      
-      <section>
-        <%= yield %>
-      </section>
+      <%= yield %>
     </main>
-    <footer>このアプリケーションはスマホ専用です。スマホサイズで開いてください。</footer>
   </body>
 </html>
